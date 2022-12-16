@@ -20,11 +20,11 @@ public enum MainCommand {
         throw new IllegalArgumentException(INVALID_VALUE_MESSAGE);
     }
 
-    public boolean isFindRouteCode(MainCommand command){
-        return command == FIND_ROUTE;
+    public boolean isFindRouteCode(){
+        return this == FIND_ROUTE;
     }
 
-    public boolean isQuitCode(MainCommand command){
-        return command == QUIT;
+    public boolean isQuitCode(){
+        return this == QUIT;
     }
 }
