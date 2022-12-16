@@ -21,15 +21,15 @@ public enum FindCommand {
         throw new IllegalArgumentException(INVALID_VALUE_MESSAGE);
     }
 
-    public boolean isShortestDistance(FindCommand command) {
-        return command == SHORTEST_DISTANCE;
+    public boolean isShortestDistance() {
+        return this == SHORTEST_DISTANCE;
     }
 
-    public boolean isSmallestTime(FindCommand command) {
-        return command == SMALLEST_TIME;
+    public boolean isSmallestTime() {
+        return this == SMALLEST_TIME;
     }
 
-    public boolean isBack(FindCommand command) {
-        return command == BACK;
+    public boolean isBack() {
+        return this== BACK;
     }
 }
