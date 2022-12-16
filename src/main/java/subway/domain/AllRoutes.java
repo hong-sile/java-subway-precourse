@@ -1,5 +1,7 @@
 package subway.domain;
 
+import org.jgrapht.GraphPath;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.command.FindCommand;
 import subway.dto.EdgeDto;
@@ -12,9 +14,9 @@ public class AllRoutes {
     }
 
     public LineWeightEdge findRoute(EdgeDto edgeDto, FindCommand command) {
-        routes.getEdge(edgeDto.getStartSource().getStation(),
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(routes);
+        GraphPath path = dijkstraShortestPath.getPath(edgeDto.getStartSource().getStation(),
                 edgeDto.getDestinationSource().getStation());
-
         return null;
     }
 
