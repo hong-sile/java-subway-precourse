@@ -27,4 +27,12 @@ public class LineWeightEdge extends DefaultWeightedEdge {
     public static void weightIsDistance() {
         isWeightTime = false;
     }
+
+    public int getTime() {
+        return time;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
 }
