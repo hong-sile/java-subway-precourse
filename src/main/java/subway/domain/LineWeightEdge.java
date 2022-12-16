@@ -3,9 +3,9 @@ package subway.domain;
 import org.jgrapht.graph.DefaultWeightedEdge;
 
 public class LineWeightEdge extends DefaultWeightedEdge {
+    private static boolean isWeightTime;
     private final int time;
     private final int distance;
-    private boolean isWeightTime;
 
     public LineWeightEdge(int time, int distance) {
         this.time = time;
@@ -20,11 +20,11 @@ public class LineWeightEdge extends DefaultWeightedEdge {
         return distance;
     }
 
-    public void weightIsTime() {
+    public static void weightIsTime() {
         isWeightTime = true;
     }
 
-    public void weightIsDistance() {
+    public static void weightIsDistance() {
         isWeightTime = false;
     }
 }
