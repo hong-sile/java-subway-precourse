@@ -8,10 +8,10 @@ import subway.command.FindCommand;
 import subway.dto.EdgeDto;
 import subway.dto.FindResultDto;
 
-public class AllRoutes {
+public class Routes {
     private final WeightedMultigraph<Station, LineWeightEdge> routes;
 
-    public AllRoutes() {
+    public Routes() {
         routes = new WeightedMultigraph<>(LineWeightEdge.class);
     }
 

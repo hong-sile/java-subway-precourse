@@ -1,15 +1,15 @@
 package subway.service;
 
 import subway.command.FindCommand;
-import subway.domain.AllRoutes;
+import subway.domain.Routes;
 import subway.dto.EdgeDto;
 import subway.dto.FindResultDto;
 
 public class SubwayService {
-    private final AllRoutes allRoutes = new AllRoutes();
+    private final Routes routes = new Routes();
 
     public FindResultDto routeLookup(EdgeDto edgeDto, FindCommand command) {
-        FindResultDto route = allRoutes.findRoute(edgeDto, command);
+        FindResultDto route = routes.findRoute(edgeDto, command);
         return route;
     }
 }
