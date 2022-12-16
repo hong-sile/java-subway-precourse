@@ -11,4 +11,10 @@ public class InputView {
         return MainCommand.from(code);
     }
 
+    public static FindCommand readFindCommand(Scanner scanner) {
+        String code = scanner.nextLine();
+        return FindCommand.from(code);
+    }
+
+
 }
