@@ -10,6 +10,10 @@ public class StationDto {
         this.station = StationRepository.findByName(station);
     }
 
+    public StationDto(Station station) {
+        this.station = station;
+    }
+
     public Station getStation() {
         return station;
     }

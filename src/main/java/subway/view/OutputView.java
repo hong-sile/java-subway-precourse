@@ -2,7 +2,8 @@ package subway.view;
 
 import subway.command.FindCommand;
 import subway.command.MainCommand;
-import subway.dto.LineWeightDto;
+import subway.dto.FindResultDto;
+import subway.dto.StationDto;
 
 public class OutputView {
     private static final String DESCRIPTION_PREFIX = "## ";
@@ -44,11 +45,15 @@ public class OutputView {
         printReadCommandMessage();
     }
 
-    public static void printResult(LineWeightDto lineWeightDto) {
+    public static void printResult(FindResultDto findResultDto) {
         System.out.println(DESCRIPTION_PREFIX + FIND_RESULT_MESSAGE);
         System.out.println(INFO_PREFIX + CONTOUR);
-        System.out.println(INFO_PREFIX + TOTAL_DISTANCE_MESSAGE + lineWeightDto.getDistance() + DISTANCE_UNIT);
-        System.out.println(INFO_PREFIX + TOTAL_TIME_MESSAGE + lineWeightDto.getTime() + TIME_UNIT);
+        System.out.println(INFO_PREFIX + TOTAL_DISTANCE_MESSAGE + findResultDto.getDistance() + DISTANCE_UNIT);
+        System.out.println(INFO_PREFIX + TOTAL_TIME_MESSAGE + findResultDto.getTime() + TIME_UNIT);
         System.out.println(INFO_PREFIX + CONTOUR);
+        for (StationDto station : findResultDto.getVertexes()) {
+            System.out.print(INFO_PREFIX);
+            System.out.println(station.getStation().getName());
+        }
     }
 }

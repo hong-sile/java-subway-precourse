@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.dto.StationDto;
+
 public class Station {
     private String name;
 
@@ -14,5 +16,8 @@ public class Station {
     public boolean isName(String name) {
         return this.name.equals(name);
     }
-    // 추가 기능 구현
+
+    public StationDto toDto() {
+        return new StationDto(this);
+    }
 }

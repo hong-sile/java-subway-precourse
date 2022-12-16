@@ -6,7 +6,7 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.command.FindCommand;
 import subway.dto.EdgeDto;
-import subway.dto.LineWeightDto;
+import subway.dto.FindResultDto;
 
 public class AllRoutes {
     private final WeightedMultigraph<Station, LineWeightEdge> routes;
@@ -15,24 +15,22 @@ public class AllRoutes {
         routes = new WeightedMultigraph<>(LineWeightEdge.class);
     }
 
-    public LineWeightDto findRoute(EdgeDto edgeDto, FindCommand command) {
+    public FindResultDto findRoute(EdgeDto edgeDto, FindCommand command) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(routes);
         GraphPath path = dijkstraShortestPath.getPath(edgeDto.getStartSource().getStation(),
                 edgeDto.getDestinationSource().getStation());
         return calculateValue(path);
     }
 
-    private LineWeightDto calculateValue(GraphPath path) {
+    private FindResultDto calculateValue(GraphPath path) {
         List<LineWeightEdge> edgeList = path.getEdgeList();
-        int time = edgeList
-                .stream()
+        int time = edgeList.stream()
                 .mapToInt(LineWeightEdge::getTime)
                 .sum();
-        int distance = edgeList
-                .stream()
+        int distance = edgeList.stream()
                 .mapToInt(LineWeightEdge::getDistance)
                 .sum();
-        return new LineWeightDto(time, distance);
+        return new FindResultDto(time, distance, path.getVertexList());
     }
 
     private void weightDecide(FindCommand command) {

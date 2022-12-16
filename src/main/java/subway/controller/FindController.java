@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.function.Function;
 import subway.command.FindCommand;
 import subway.dto.EdgeDto;
-import subway.dto.LineWeightDto;
+import subway.dto.FindResultDto;
 import subway.service.SubwayService;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -22,8 +22,7 @@ public class FindController {
         FindCommand findCommand = repeatRead(InputView::readFindCommand);
         while (!findCommand.isBack()) {
             EdgeDto edgeDto = repeatRead(InputView::readStations);
-            LineWeightDto lineWeightDto = subWayService.routeLookup(edgeDto, findCommand);
-            //LineWeightDto로 출력하는 기능
+            OutputView.printResult(subWayService.routeLookup(edgeDto, findCommand));
             findCommand = repeatRead(InputView::readFindCommand);
         }
     }
