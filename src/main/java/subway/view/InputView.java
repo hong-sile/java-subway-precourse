@@ -9,6 +9,7 @@ import subway.dto.StationDto;
 public class InputView {
 
     public static MainCommand readMainCommand(Scanner scanner) {
+        OutputView.printMainScreen();
         String code = scanner.nextLine();
         return MainCommand.from(code);
     }
